@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Country from "../components/Country";
 import './CountriesContainer.css';
-
+import ReactModal from 'react-modal';
+import CountryName from "../components/CountryName";
 
 const CountriesContainer = () => {
 
@@ -16,13 +17,15 @@ const CountriesContainer = () => {
     }
 
 
-    const mappedCountries = countries.map(country => {      
+    const mappedCountries = countries.map(country => {   
+        
         const deleteCountry = (e) => {
             setCountries(temp => {
                 return temp.filter(country => country!== e);
             })
             setVisitedCountries([...visitedCountries,e])
         }   
+
         return(
             <>
                 <Country country={country} />
@@ -34,20 +37,31 @@ const CountriesContainer = () => {
     const mappedVisitedCountries =visitedCountries.map(country => {        
         return(
             <>
-                <Country country={country} />
+                <CountryName country={country} />
                 <hr></hr>
             </> 
         )  
     })
 
+    
+
     useEffect(() => {
-        console.log("loading data");
         loadData();
     },[]);
 
+    const filterCountries = (e) => {
+        console.log(e);
+        let filtered = countries.filter(country => country.name.common.toLowerCase().includes(e));
+        setCountries(filtered);
+    }
+
     return(
         <>
+    
         <div className="box">
+            <input placeholder="Enter Country" 
+            onChange={ (e) => filterCountries(e.target.value) }/>
+            <input type="submit" />
             <h2>Countries</h2>
             <hr></hr>
             {mappedCountries}

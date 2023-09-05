@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Country from "../components/Country";
 import './CountriesContainer.css';
-import CountryList from "../components/CountryList";
+
 
 const CountriesContainer = () => {
 
@@ -26,7 +26,7 @@ const CountriesContainer = () => {
         return(
             <>
                 <Country country={country} />
-                <button onClick={()=> deleteCountry(country)}>Click me</button>
+                <button onClick={()=> deleteCountry(country)}>Visited</button>
                 <hr></hr>
             </> 
         )  

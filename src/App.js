@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import CountriesContainer from './containers/CountriesContainer';
-import VisitedCountries from './containers/VisitedCountries';
+
 
 function App() {
   return (
@@ -9,7 +9,6 @@ function App() {
 
       <div className="App">
         <CountriesContainer />
-        {/* <CountriesContainer /> */}
       </div>
     </>
   );
